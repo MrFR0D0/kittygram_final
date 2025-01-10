@@ -14,8 +14,8 @@ SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 
 DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 # DEBUG = False
-
-ALLOWED_HOSTS = ['51.250.101.90', '127.0.0.1', 'localhost', 'kyttygrammmm.bounceme.net']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1, localhost').split(',')
+# ALLOWED_HOSTS = ['51.250.101.90', '127.0.0.1', 'localhost', 'kyttygrammmm.bounceme.net']
 
 # ALLOWED_HOSTS = list(map(str.strip, os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')))
 # ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
