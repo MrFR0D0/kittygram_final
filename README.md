@@ -1,30 +1,3 @@
-#  Как работать с репозиторием финального задания
-
-## Что нужно сделать
-
-Настроить запуск проекта Kittygram в контейнерах и CI/CD с помощью GitHub Actions
-
-## Как проверить работу с помощью автотестов
-
-В корне репозитория создайте файл tests.yml со следующим содержимым:
-```yaml
-repo_owner: ваш_логин_на_гитхабе
-kittygram_domain: полная ссылка (https://доменное_имя) на ваш проект Kittygram
-taski_domain: полная ссылка (https://доменное_имя) на ваш проект Taski
-dockerhub_username: ваш_логин_на_докерхабе
-```
-
-Скопируйте содержимое файла `.github/workflows/main.yml` в файл `kittygram_workflow.yml` в корневой директории проекта.
-
-Для локального запуска тестов создайте виртуальное окружение, установите в него зависимости из backend/requirements.txt и запустите в корневой директории проекта `pytest`.
-
-## Чек-лист для проверки перед отправкой задания
-
-- Проект Taski доступен по доменному имени, указанному в `tests.yml`.
-- Проект Kittygram доступен по доменному имени, указанному в `tests.yml`.
-- Пуш в ветку main запускает тестирование и деплой Kittygram, а после успешного деплоя вам приходит сообщение в телеграм.
-- В корне проекта есть файл `kittygram_workflow.yml`.
-
 [![Main Taski workflow](https://github.com/MrFR0D0/kittygram_final/actions/workflows/main.yml/badge.svg)](https://github.com/MrFR0D0/kittygram_final/actions/workflows/main.yml)
 
 #  Проект «Kittygram»
@@ -67,12 +40,14 @@ cd kittygram_final/
 # Создаем и редактируем файл .env, в котором нужно указать данные
 sudo nano .env
 # 
-DJANGO_KEY= <Секретный ключ джанго>
 POSTGRES_DB=<Желаемое_имя_базы_данных>
 POSTGRES_USER=<Желаемое_имя_пользователя_базы_данных>
 POSTGRES_PASSWORD=<Желаемый_пароль_пользователя_базы_данных>
 DB_HOST=db
 DB_PORT=5432
+SECRET_KEY=<Секретный ключ джанго>
+DEBUG=<Режим дебага>
+ALLOWED_HOSTS=<Разрешенные хосты>
 # Сохраняем файл.
 # Далее выполняем последовательно
 sudo docker compose -f docker-compose.production.yml down

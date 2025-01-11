@@ -13,6 +13,8 @@ services:
       - pg_data:/var/lib/postgresql/data
   backend:
     image: dimanikolaev/kittygram_backend
+    depends_on:
+      - db
     env_file: .env
     volumes:
       - static:/backend_static
@@ -25,6 +27,9 @@ services:
       - static:/static
   gateway:
     image: dimanikolaev/kittygram_gateway
+    depends_on:
+      - backend
+      - frontend
     env_file: .env
     volumes:
       - static:/static/
